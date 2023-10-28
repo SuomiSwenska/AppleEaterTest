@@ -39,28 +39,27 @@ public class Character : MonoBehaviour
     {
         _characterAnimationState = EnumAnimationState.Walk;
         _characterAnimationSide = GetMovingSide(targetPosition);
+
         OnAnimationChanged?.Invoke();
     }
 
     private EnumAnimationSide GetMovingSide(Vector3 targetPosition)
     {
         Vector3 direction = targetPosition - transform.position;
-        //direction.x = 0;
         direction.y = 0;
-        float angle = Vector3.Angle(Vector3.forward, direction);
 
-        Debug.Log(direction + " Angle: " + angle);
+        float angle = Vector3.SignedAngle(Vector3.forward, direction, Vector3.up);
 
         switch (angle)
         {
-            case float a when (a >= 315f || a <= 45f):
-                return EnumAnimationSide.Up;
-            case float a when (a >= 45f && a <= 135f):
+            case float a when(a > 45f && a <= 135f):
                 return EnumAnimationSide.Right;
-            case float a when (a >= 135f && a <= 225f):
+            case float a when(a > -135f && a <= -45f):
+                return EnumAnimationSide.Left;
+            case float a when(a > 135f || a <= -135f):
                 return EnumAnimationSide.Down;
             default:
-                return EnumAnimationSide.Left;
+                return EnumAnimationSide.Up;
         }
     }
 }
