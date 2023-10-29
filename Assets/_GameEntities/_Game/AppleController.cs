@@ -38,6 +38,8 @@ public class AppleController : MonoBehaviour
             Apple newApple = _objectsPool.GetApple();
             newApple.transform.position = setPosition;
         }
+
+        pointsCount = 0;
     }
 
     private void AppleTakeHandler(Apple apple)
@@ -45,6 +47,7 @@ public class AppleController : MonoBehaviour
         pointsCount++;
         _objectsPool.AddAppleToPool(apple);
         _gameplay.OnUpdateUIPoints?.Invoke(pointsCount);
+        Saver.instance.SaveResult(pointsCount);
     }
 
     private void ReturnApplesToObjectPool()

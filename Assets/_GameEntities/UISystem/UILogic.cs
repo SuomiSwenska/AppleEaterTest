@@ -18,6 +18,11 @@ public class UILogic : MonoBehaviour
         _gameplay = FindObjectOfType<Gameplay>();
     }
 
+    private void Start()
+    {
+        StartPanelActivate();
+    }
+
     private void OnEnable()
     {
         _gameplay.OnStartButtonDown += GamePanelActivate;
@@ -45,6 +50,7 @@ public class UILogic : MonoBehaviour
     {
         _startPanel.SetActive(true);
         _gamePanel.SetActive(false);
+        ShowBestResult();
     }
 
     private void UpdateHealthbar(float health)
@@ -55,5 +61,11 @@ public class UILogic : MonoBehaviour
     private void UpdatePoints(int points)
     {
         _pointsTMP.text = points.ToString();
+    }
+
+    private void ShowBestResult()
+    {
+        _resultItem.gameObject.SetActive(true);
+        _resultItem.text = "User Alex :  " + Saver.instance.GetBestResult();
     }
 }
