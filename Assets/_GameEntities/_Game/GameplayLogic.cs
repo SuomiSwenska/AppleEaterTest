@@ -48,7 +48,6 @@ public class GameplayLogic : MonoBehaviour
     {
         _health = _gameplay.Character.CharacterData.MaxHitPoints;
         _gameplay.OnUpdateUIHealth?.Invoke(_health);
-        _gameplay.OnUpdateUIHealth?.Invoke(0);
         _gameplay.InPlaing = true;
     }
 

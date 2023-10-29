@@ -8,6 +8,7 @@ public class UILogic : MonoBehaviour
     [SerializeField] private GameObject _startPanel;
     [SerializeField] private GameObject _gamePanel;
     [SerializeField] private TextMeshProUGUI _pointsTMP;
+    [SerializeField] private TextMeshProUGUI _hitPointTMP;
     [SerializeField] private GameObject _resultItemGO;
     [SerializeField] private TextMeshProUGUI _resultItem;
 
@@ -55,7 +56,7 @@ public class UILogic : MonoBehaviour
 
     private void UpdateHealthbar(float health)
     {
-
+        _hitPointTMP.text = "HP : " + health;
     }
 
     private void UpdatePoints(int points)
