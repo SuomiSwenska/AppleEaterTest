@@ -7,6 +7,16 @@ public class GameplayLogic : MonoBehaviour
     private Gameplay _gameplay;
     private float _health;
 
+    public float Health
+    {
+        get => _health;
+        set
+        {
+            if (_health > 0) _health = value;
+            else Debug.Log("Don't touch me, I am dead. Health <= 0 ");
+        }
+    }
+
     private void Awake()
     {
         _gameplay = GetComponent<Gameplay>();
@@ -28,7 +38,7 @@ public class GameplayLogic : MonoBehaviour
 
     private void HitReaction()
     {
-        _health -= _gameplay.TouchDamage;
+        Health -= _gameplay.TouchDamage;
         _gameplay.OnUpdateUIHealth?.Invoke(_health);
         if (_health <= 0) _gameplay.OnPlayerDeath?.Invoke();
         Debug.Log("Hit player health = " + _health);
