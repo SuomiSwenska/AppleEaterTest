@@ -27,6 +27,7 @@ public class Factory : MonoBehaviour
         for (int i = 0; i < _gameplay.StartApplesCount; i++)
         {
             GameObject appleGO = Instantiate(_applePrefab);
+            appleGO.name = "Apple_" + i;
             _objectsPool.AddAppleToPool(appleGO.GetComponent<Apple>());
         }
     }
@@ -36,6 +37,7 @@ public class Factory : MonoBehaviour
         for (int i = 0; i < _gameplay.StartEnemiesCount; i++)
         {
             GameObject enemyGO = Instantiate(_enemyPrefab);
+            enemyGO.name = "Enemy_" + i;
             _objectsPool.AddEnemyToPool(enemyGO);
         }
     }

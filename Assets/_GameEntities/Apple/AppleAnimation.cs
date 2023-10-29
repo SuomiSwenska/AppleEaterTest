@@ -20,7 +20,7 @@ public class AppleAnimation : MonoBehaviour
     {
         targetScale = new Vector3(minScale, minScale, minScale);
 
-        while (true) // Бесконечный цикл
+        while (true)
         {
             float t = 0;
             Vector3 startScale = transform.localScale;

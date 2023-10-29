@@ -20,12 +20,14 @@ public class AppleController : MonoBehaviour
     {
         _gameplay.OnAppleTake += AppleTakeHandler;
         _gameplay.OnStartButtonDown += SetNewApples;
+        _gameplay.OnPlayerDeath += ReturnApplesToObjectPool;
     }
 
     private void OnDisable()
     {
         _gameplay.OnAppleTake -= AppleTakeHandler;
         _gameplay.OnStartButtonDown -= SetNewApples;
+        _gameplay.OnPlayerDeath -= ReturnApplesToObjectPool;
     }
 
     private void SetNewApples()
@@ -43,5 +45,11 @@ public class AppleController : MonoBehaviour
         pointsCount++;
         _objectsPool.AddAppleToPool(apple);
         _gameplay.OnUpdateUIPoints?.Invoke(pointsCount);
+    }
+
+    private void ReturnApplesToObjectPool()
+    {
+        _objectsPool.TurnToPoolApples();
+        _objectsPool.TurnToPoolEnemies();
     }
 }

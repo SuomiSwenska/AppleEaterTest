@@ -12,11 +12,15 @@ public class Gameplay : MonoBehaviour
     public Action<float> OnUpdateUIHealth;
     public Action<int> OnUpdateUIPoints;
 
+    [SerializeField] private Character _character;
     [SerializeField] private int _startApplesCount;
     [SerializeField] private int _startEnemiesCount;
     [SerializeField] private float _touchDamage;
+    [SerializeField] private bool _inPlaing;
 
     public int StartApplesCount { get => _startApplesCount; }
     public int StartEnemiesCount { get => _startEnemiesCount; }
     public float TouchDamage { get => _touchDamage; }
+    public bool InPlaing { get => _inPlaing; set => _inPlaing = value; }
+    public Character Character { get => _character; }
 }

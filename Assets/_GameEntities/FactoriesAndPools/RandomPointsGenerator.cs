@@ -8,13 +8,15 @@ public class RandomPointsGenerator : MonoBehaviour
     [SerializeField] private int _pointsCount;
     [SerializeField] private Vector2 _distanceRange;
 
-    private void Start()
-    {
-        CreateNewRandomPoint();
-    }
+    //private void Start()
+    //{
+    //    CreateNewRandomPoint();
+    //}
 
     public Vector3 GetEmptyPoint()
     {
+        if (_randomPoints.Count <= 0) CreateNewRandomPoint();
+
         int randomPointIndex = Random.Range(0, _randomPoints.Count);
         Vector3 point = _randomPoints[randomPointIndex];
         _randomPoints.RemoveAt(randomPointIndex);

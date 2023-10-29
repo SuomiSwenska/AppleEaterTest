@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour, IMovable, IDamageable
+public class Character : MonoBehaviour, IMovable
 {
     public Action OnAnimationChanged;
 
@@ -14,22 +14,19 @@ public class Character : MonoBehaviour, IMovable, IDamageable
 
     private InputController _inputController;
     private Gameplay _gameplay;
-    private Rigidbody2D _rigidbody;
     private IMovable _movable;
-    private IDamageable _damageable;
 
     private bool _onRoute;
 
     public EnumAnimationState CharacterAnimationState { get => _characterAnimationState; private set => _characterAnimationState = value; }
     public EnumAnimationSide CharacterAnimationSide { get => _characterAnimationSide; private set => _characterAnimationSide = value; }
+    public CharacterData CharacterData { get => _characterData; }
 
     private void Awake()
     {
         _inputController = FindObjectOfType<InputController>();
         _gameplay = FindObjectOfType<Gameplay>();
-        _rigidbody = GetComponentInChildren<Rigidbody2D>();
         _movable = this;
-        _damageable = this;
     }
 
     private void Start()
@@ -40,7 +37,6 @@ public class Character : MonoBehaviour, IMovable, IDamageable
     private void OnEnable()
     {
         _inputController.OnGetNewMovingPosition += GetNewMovingPositionHandler;
-        //_gameplay.OnEnemyTouch += 
     }
 
     private void OnDisable()
@@ -48,18 +44,16 @@ public class Character : MonoBehaviour, IMovable, IDamageable
         _inputController.OnGetNewMovingPosition -= GetNewMovingPositionHandler;
     }
 
-    public void Init()
-    {
-        
-    }
-
     public void Deactivate()
     {
-
+        StopAllCoroutines();
+        DestinationReached();
     }
 
     private void GetNewMovingPositionHandler(Vector3 targetPosition)
     {
+        if (!_gameplay.InPlaing) return;
+
         _characterAnimationState = EnumAnimationState.Walk;
         _characterAnimationSide = GetMovingSide(targetPosition);
 
@@ -97,16 +91,6 @@ public class Character : MonoBehaviour, IMovable, IDamageable
         }
 
         StartCoroutine(MoveCoroutine(position));
-    }
-
-    void IDamageable.GetDamage()
-    {
-        //_gameplay.OnEnemyTouch?.Invoke();
-    }
-
-    void IDamageable.Death()
-    {
-        _gameplay.OnPlayerDeath?.Invoke();
     }
 
     private IEnumerator MoveCoroutine(Vector3 position)
