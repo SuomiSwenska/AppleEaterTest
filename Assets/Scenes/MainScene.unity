@@ -940,7 +940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1294834087}
   m_Layer: 0
-  m_Name: PermanentGameObjects
+  m_Name: SceneGameObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1031,6 +1031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35336547d2e5acc4f95a574cdffdefae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterData: {fileID: 11400000, guid: f2f8d26b69f6e3f4cbea5732871751bb, type: 2}
   _characterAnimationState: 0
   _characterAnimationSide: 0
 --- !u!1001 &1483725510
