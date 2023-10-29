@@ -8,4 +8,11 @@ public class Gameplay : MonoBehaviour
     public Action<Apple> OnAppleTake;
     public Action OnEnemyTouch;
     public Action OnPlayerDeath;
+    public Action OnStartButtonDown;
+
+    [SerializeField] private int _startApplesCount;
+    [SerializeField] private int _startEnemiesCount;
+
+    public int StartApplesCount { get => _startApplesCount; }
+    public int StartEnemiesCount { get => _startEnemiesCount; }
 }

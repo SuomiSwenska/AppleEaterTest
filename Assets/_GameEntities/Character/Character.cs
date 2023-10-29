@@ -40,6 +40,7 @@ public class Character : MonoBehaviour, IMovable, IDamageable
     private void OnEnable()
     {
         _inputController.OnGetNewMovingPosition += GetNewMovingPositionHandler;
+        //_gameplay.OnEnemyTouch += 
     }
 
     private void OnDisable()
@@ -100,7 +101,7 @@ public class Character : MonoBehaviour, IMovable, IDamageable
 
     void IDamageable.GetDamage()
     {
-        _gameplay.OnEnemyTouch?.Invoke();
+        //_gameplay.OnEnemyTouch?.Invoke();
     }
 
     void IDamageable.Death()

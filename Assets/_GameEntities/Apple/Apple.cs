@@ -5,6 +5,9 @@ using UnityEngine;
 public class Apple : MonoBehaviour
 {
     private Gameplay _gameplay;
+    private bool _isActive;
+
+    public bool IsActive { get => _isActive; }
 
     private void Awake()
     {
@@ -13,6 +16,10 @@ public class Apple : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _gameplay.OnAppleTake?.Invoke(this);
+        if (Vector3.Distance(transform.position, collision.transform.position) <= 1f)
+        {
+            Debug.Log("Aplple collision on distance: " + Vector3.Distance(transform.position, collision.transform.position), collision.transform);
+            _gameplay.OnAppleTake?.Invoke(this);
+        }
     }
 }
