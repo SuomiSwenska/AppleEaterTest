@@ -13,7 +13,7 @@ public class GameplayLogic : MonoBehaviour
         set
         {
             if (_health > 0) _health = value;
-            else Debug.Log("Don't touch me, I am dead. Health <= 0 ");
+            else if (_gameplay.InPlaing) _gameplay.OnPlayerDeath?.Invoke();
         }
     }
 
@@ -40,7 +40,6 @@ public class GameplayLogic : MonoBehaviour
     {
         Health -= _gameplay.TouchDamage;
         _gameplay.OnUpdateUIHealth?.Invoke(_health);
-        if (_health <= 0) _gameplay.OnPlayerDeath?.Invoke();
         Debug.Log("Hit player health = " + _health);
     }
 
