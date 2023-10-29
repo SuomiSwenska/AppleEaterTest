@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameplayLogic : MonoBehaviour
 {
     private Gameplay _gameplay;
+    private float health;
 
     private void Awake()
     {
@@ -23,6 +24,8 @@ public class GameplayLogic : MonoBehaviour
 
     private void HitReaction()
     {
-        Debug.Log("Hit player");
+        health -= _gameplay.TouchDamage;
+        _gameplay.OnUpdateUIHealth?.Invoke(health);
+        Debug.Log("Hit player health = " + health);
     }
 }

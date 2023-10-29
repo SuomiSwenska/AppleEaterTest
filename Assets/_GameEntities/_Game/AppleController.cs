@@ -7,6 +7,7 @@ public class AppleController : MonoBehaviour
     private Gameplay _gameplay;
     private RandomPointsGenerator _randomPointsGenerator;
     private ObjectsPool _objectsPool;
+    private int pointsCount;
 
     private void Awake()
     {
@@ -27,12 +28,6 @@ public class AppleController : MonoBehaviour
         _gameplay.OnStartButtonDown -= SetNewApples;
     }
 
-    private IEnumerator Start()
-    {
-        yield return new WaitForSeconds(1f);
-        SetNewApples();
-    }
-
     private void SetNewApples()
     {
         for (int i = 0; i < _gameplay.StartApplesCount; i++)
@@ -45,6 +40,8 @@ public class AppleController : MonoBehaviour
 
     private void AppleTakeHandler(Apple apple)
     {
+        pointsCount++;
         _objectsPool.AddAppleToPool(apple);
+        _gameplay.OnUpdateUIPoints?.Invoke(pointsCount);
     }
 }

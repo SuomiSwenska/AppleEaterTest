@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    private Gameplay _gameplay;
     public Action<Vector3> OnGetNewMovingPosition;
+
+    private void Awake()
+    {
+        _gameplay = FindObjectOfType<Gameplay>();
+    }
 
     private void Update()
     {
@@ -29,5 +35,10 @@ public class InputController : MonoBehaviour
 
             OnGetNewMovingPosition?.Invoke(worldPosition);
         }
+    }
+
+    public void StartButtonDown()
+    {
+        _gameplay.OnStartButtonDown?.Invoke();
     }
 }

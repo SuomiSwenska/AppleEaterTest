@@ -25,12 +25,6 @@ public class EnemyController : MonoBehaviour
         _gameplay.OnStartButtonDown -= SetNewEnemies;
     }
 
-    private IEnumerator Start()
-    {
-        yield return new WaitForSeconds(1f);
-        SetNewEnemies();
-    }
-
     private void SetNewEnemies()
     {
         for (int i = 0; i < _gameplay.StartEnemiesCount; i++)
