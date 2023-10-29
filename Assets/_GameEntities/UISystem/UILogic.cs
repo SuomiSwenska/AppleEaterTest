@@ -7,7 +7,9 @@ public class UILogic : MonoBehaviour
 {
     [SerializeField] private GameObject _startPanel;
     [SerializeField] private GameObject _gamePanel;
-    [SerializeField] private TextMeshProUGUI pointsTMP;
+    [SerializeField] private TextMeshProUGUI _pointsTMP;
+    [SerializeField] private GameObject _resultItemGO;
+    [SerializeField] private TextMeshProUGUI _resultItem;
 
     private Gameplay _gameplay;
 
@@ -36,7 +38,7 @@ public class UILogic : MonoBehaviour
     {
         _startPanel.SetActive(false);
         _gamePanel.SetActive(true);
-        pointsTMP.text = "0";
+        _pointsTMP.text = "0";
     }
 
     private void StartPanelActivate()
@@ -52,6 +54,6 @@ public class UILogic : MonoBehaviour
 
     private void UpdatePoints(int points)
     {
-        pointsTMP.text = points.ToString();
+        _pointsTMP.text = points.ToString();
     }
 }
