@@ -904,7 +904,7 @@ MonoBehaviour:
   _startPanel: {fileID: 2128207429}
   _gamePanel: {fileID: 1622648075}
   _pointsTMP: {fileID: 487313085}
-  _hitPointTMP: {fileID: 0}
+  _hitPointTMP: {fileID: 1885077029}
   _resultItemGO: {fileID: 1141294882}
   _resultItem: {fileID: 1258521314}
 --- !u!1 &519420028

@@ -1,3 +1,4 @@
+﻿using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,13 +25,18 @@ public class Saver : MonoBehaviour
         }
 
 
-        if (result > prevResult)
+        if (result > prevResult)                           //Threading function
         {
-            ResultData myData = new ResultData();
-            myData.bestResult = result;
+            Thread thread = new Thread(() =>
+            {
+                ResultData myData = new ResultData();
+                myData.bestResult = result;
 
-            string jsonData = JsonUtility.ToJson(myData);
-            System.IO.File.WriteAllText("data.json", jsonData);
+                string jsonData = JsonUtility.ToJson(myData);
+                System.IO.File.WriteAllText("data.json", jsonData);
+            });
+
+            thread.Start();
 
             PlayerPrefs.SetInt("HaveResult", -1);
         }
