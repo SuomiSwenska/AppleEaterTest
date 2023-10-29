@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IMovable
+public class Enemy : MonoBehaviour
 {
     private Gameplay _gameplay;
     private bool _inContact;
-    private IMovable _movable;
     private RandomPointsGenerator _randomPointsGenerator;
 
     [SerializeField] private float _contactDelay;
@@ -19,7 +18,6 @@ public class Enemy : MonoBehaviour, IMovable
     {
         _randomPointsGenerator = FindObjectOfType<RandomPointsGenerator>();
         _gameplay = FindObjectOfType<Gameplay>();
-        _movable = this;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -79,10 +77,5 @@ public class Enemy : MonoBehaviour, IMovable
             yield return new WaitForSeconds(_contactDelay);
             _gameplay.OnEnemyTouch?.Invoke();
         }
-    }
-
-    void IMovable.Move(Vector3 position)
-    {
-        throw new System.NotImplementedException();
     }
 }

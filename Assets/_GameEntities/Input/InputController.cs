@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    private Gameplay _gameplay;
+    protected Gameplay _gameplay;
     public Action<Vector3> OnGetNewMovingPosition;
 
-    private void Awake()
+    protected void Awake()
     {
         _gameplay = FindObjectOfType<Gameplay>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        if (Input.touchCount > 0)
+
+#if ANDROID
+if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
 
@@ -27,14 +29,14 @@ public class InputController : MonoBehaviour
                 OnGetNewMovingPosition?.Invoke(worldPosition);
             }
         }
-
-        if (Input.GetMouseButtonDown(0))
+#else
         {
             Vector3 mousePosition = Input.mousePosition;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePosition.x, mousePosition.y, 10f));
 
             OnGetNewMovingPosition?.Invoke(worldPosition);
         }
+#endif
     }
 
     public void StartButtonDown()
