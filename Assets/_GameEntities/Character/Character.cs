@@ -6,9 +6,6 @@ using UnityEngine;
 public class Character : MonoBehaviour, IMovable, IDamageable
 {
     public Action OnAnimationChanged;
-    public Action OnAppleTake;
-    public Action OnDamage;
-    public Action OnDeath;
 
     [SerializeField] private CharacterData _characterData;
 
@@ -16,6 +13,8 @@ public class Character : MonoBehaviour, IMovable, IDamageable
     [SerializeField] private EnumAnimationSide _characterAnimationSide;
 
     private InputController _inputController;
+    private Gameplay _gameplay;
+    private Rigidbody2D _rigidbody;
     private IMovable _movable;
     private IDamageable _damageable;
 
@@ -27,6 +26,8 @@ public class Character : MonoBehaviour, IMovable, IDamageable
     private void Awake()
     {
         _inputController = FindObjectOfType<InputController>();
+        _gameplay = FindObjectOfType<Gameplay>();
+        _rigidbody = GetComponentInChildren<Rigidbody2D>();
         _movable = this;
         _damageable = this;
     }
@@ -44,6 +45,16 @@ public class Character : MonoBehaviour, IMovable, IDamageable
     private void OnDisable()
     {
         _inputController.OnGetNewMovingPosition -= GetNewMovingPositionHandler;
+    }
+
+    public void Init()
+    {
+        
+    }
+
+    public void Deactivate()
+    {
+
     }
 
     private void GetNewMovingPositionHandler(Vector3 targetPosition)
@@ -89,26 +100,23 @@ public class Character : MonoBehaviour, IMovable, IDamageable
 
     void IDamageable.GetDamage()
     {
-        throw new NotImplementedException();
+        _gameplay.OnEnemyTouch?.Invoke();
     }
 
     void IDamageable.Death()
     {
-        throw new NotImplementedException();
+        _gameplay.OnPlayerDeath?.Invoke();
     }
 
     private IEnumerator MoveCoroutine(Vector3 position)
     {
         _onRoute = true;
-        Vector3 startPosition = transform.position;
         position.y = 0;
-        float distance = Vector3.Distance(startPosition, position);
 
         while (transform.position != position)
         {
             float step = _characterData.MovingSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, position, step);
-
             yield return null;
         }
 
