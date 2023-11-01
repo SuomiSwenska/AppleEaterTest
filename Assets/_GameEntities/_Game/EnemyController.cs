@@ -32,7 +32,6 @@ public class EnemyController : MonoBehaviour
             Vector3 setPosition = _randomPointsGenerator.GetEmptyPoint();
             GameObject newEnemy = _objectsPool.GetEnemyGO();
             newEnemy.transform.position = setPosition;
-            newEnemy.transform.eulerAngles = new Vector3(80,0,0);
             newEnemy.GetComponent<Enemy>().Init();
         }
     }

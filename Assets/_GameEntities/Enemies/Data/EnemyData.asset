@@ -18,6 +18,7 @@ MonoBehaviour:
   _characterAnimationStateDef: 0
   _characterAnimationSideDef: 0
   contactDelay: 0.6
-  defaultDetectDelay: 0.05
+  defaultDetectDelay: 0.01
+  hitDamage: 3
+  detectRadius: 1.5
   routeChangeDelay: {x: 5, y: 8}
-  hitDamage: 2

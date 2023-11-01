@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f963c3677f442d44fa1ede5f65d14641, type: 3}
   m_Name: CharacterData
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 543039473106025913, guid: 2d79da4041538db48be05c7459a5dfb5, type: 3}
   movingSpeed: 6
-  maxHitPoints: 10
+  characterPrefab: {fileID: 543039473106025913, guid: 2d79da4041538db48be05c7459a5dfb5, type: 3}
+  maxHitPoints: 6
   _characterAnimationStateDef: 0
   _characterAnimationSideDef: 0

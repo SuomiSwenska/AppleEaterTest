@@ -44,12 +44,21 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator InitCoroutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         _enemyMovement.StartMove(_randomPointsGenerator.GetRandomPointToRoute());
     }
 
     private void AttackPlayer(float damage)
     {
         _gameplay.OnEnemyTouch?.Invoke();
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (transform != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, 1f);
+        }
     }
 }

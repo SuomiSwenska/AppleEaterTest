@@ -27,9 +27,9 @@ public class EnemyAttackComponent
 
     private void GetOverlapCircle()
     {
-        _currentCollider = Physics2D.OverlapCircle(_characterTransform.position, 1.5f);
+        _currentCollider = Physics2D.OverlapCircle(_characterTransform.position, _enemyData.DetectRadius);
 
-        if (_currentCollider != null && _currentCollider.CompareTag("Player"))
+        if (_currentCollider != null && Vector3.Distance(_characterTransform.position, _currentCollider.transform.position) <= _enemyData.DetectRadius && _currentCollider.CompareTag("Player"))
         {
             _detectDelay = _enemyData.ContactDelay;
             OnHitPlayer?.Invoke(_enemyData.HitDamage);

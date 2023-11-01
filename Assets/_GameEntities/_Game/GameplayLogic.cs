@@ -12,7 +12,7 @@ public class GameplayLogic : MonoBehaviour
         get => _health;
         set
         {
-            if (_health > 0) _health = value;
+            if (_health - _gameplay.TouchDamage > 0) _health = value;
             else if (_gameplay.InPlaing) _gameplay.OnPlayerDeath?.Invoke();
         }
     }
