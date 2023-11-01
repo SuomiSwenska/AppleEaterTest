@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f963c3677f442d44fa1ede5f65d14641, type: 3}
-  m_Name: CharacterData
+  m_Script: {fileID: 11500000, guid: ac3b982aa5d6e3e4796a791bad31ad4f, type: 3}
+  m_Name: EnemyData
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 543039473106025913, guid: 2d79da4041538db48be05c7459a5dfb5, type: 3}
-  movingSpeed: 6
+  movingSpeed: 3
+  characterPrefab: {fileID: 7164232097187522531, guid: 17e5e31db12d6d44eb45bc424a1b29e4, type: 3}
   maxHitPoints: 10
   _characterAnimationStateDef: 0
   _characterAnimationSideDef: 0
+  contactDelay: 0.6
+  defaultDetectDelay: 0.05
+  routeChangeDelay: {x: 5, y: 8}
+  hitDamage: 2

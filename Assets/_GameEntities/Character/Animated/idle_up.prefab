@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2969071081915753127}
   - component: {fileID: 2969071081915753126}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,13 +95,14 @@ GameObject:
   - component: {fileID: 2969071082300683105}
   - component: {fileID: 2969071082300683106}
   - component: {fileID: 2969071082300683107}
-  m_Layer: 0
+  - component: {fileID: 794197076}
+  m_Layer: 6
   m_Name: idle_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2969071082300683105
 Transform:
   m_ObjectHideFlags: 0
@@ -172,7 +173,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &2969071082300683107
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -189,5 +190,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &794197076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969071082300683108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281ea40b849217f479be80f0fe0506b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationSide: 0
+  _animationState: 0

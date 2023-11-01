@@ -36,5 +36,4 @@ public class EnemyController : MonoBehaviour
             newEnemy.GetComponent<Enemy>().Init();
         }
     }
-
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7164232095284960331}
   - component: {fileID: 7164232095284960329}
   - component: {fileID: 7164232095284960328}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sword_down_cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 7164232096198610460}
   - component: {fileID: 7164232096198610458}
   - component: {fileID: 7164232096198610461}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: weapon_sword_down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7164232096309796403}
   - component: {fileID: 7164232096309796400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 7164232096317167788}
   - component: {fileID: 7164232096317167786}
   - component: {fileID: 7164232096317167789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sword_down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 7164232097187522528}
   - component: {fileID: 1947841263}
   - component: {fileID: 1947841264}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7164232097187522531}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
   m_LocalPosition: {x: 1.7466093, y: 0, z: 3.1517541}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -435,7 +435,7 @@ Transform:
   - {fileID: 7164232096309796403}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
 --- !u!114 &1947841263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,9 +448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1084c3f87522941b7be55f9a54eb59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: cb8e7ab193edb224595bcb1853faccc7, type: 2}
   _contactDelay: 0.6
-  _movingSpeed: 1.5
-  routeChangeDelay: {x: 5, y: 8}
 --- !u!61 &1947841264
 BoxCollider2D:
   m_ObjectHideFlags: 0

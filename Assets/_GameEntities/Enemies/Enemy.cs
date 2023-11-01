@@ -4,78 +4,52 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public EnemyData enemyData;
+
     private Gameplay _gameplay;
-    private bool _inContact;
     private RandomPointsGenerator _randomPointsGenerator;
-
-    [SerializeField] private float _contactDelay;
-    [SerializeField] private float _movingSpeed;
-    [SerializeField] private Vector2 routeChangeDelay;
-
-    private Vector3 _currentRourteTarget;
+    private EnemyMovementComponent _enemyMovement;
+    private EnemyAttackComponent _enemyAttack;
 
     private void Awake()
     {
         _randomPointsGenerator = FindObjectOfType<RandomPointsGenerator>();
         _gameplay = FindObjectOfType<Gameplay>();
+
+        _enemyMovement = new EnemyMovementComponent();
+        _enemyMovement.Init(enemyData, transform);
+
+        _enemyAttack = new EnemyAttackComponent();
+        _enemyAttack.Init(enemyData, transform);
+        _enemyAttack.StartDetectCollision();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnEnable()
     {
-        if (Vector3.Distance(transform.position, collision.transform.position) <= 1f)
-        {
-            Debug.Log("Enemy collision on distance: " + Vector3.Distance(transform.position, collision.transform.position), collision.transform);
-            HitPlayer();
-        }
+        _enemyMovement.OnDestinationReached += Init;
+        _enemyAttack.OnHitPlayer += AttackPlayer;
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnDisable()
     {
-        _inContact = false;
+        _enemyMovement.OnDestinationReached -= Init;
+        _enemyAttack.OnHitPlayer -= AttackPlayer;
     }
 
     public void Init()
     {
         StopAllCoroutines();
-        StartCoroutine(RouteCoroutine());
-        StartCoroutine(RouteTargetChanerCoroutine());
+        StartCoroutine(InitCoroutine());
     }
 
-    private IEnumerator RouteCoroutine()
+    private IEnumerator InitCoroutine()
     {
-        _currentRourteTarget = _randomPointsGenerator.GetRandomPointToRoute();
-
-        while (true)
-        {
-            float step = _movingSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, _currentRourteTarget, step);
-            yield return null;
-        }
+        yield return new WaitForSeconds(0.5f);
+        _enemyMovement.StartMove(_randomPointsGenerator.GetRandomPointToRoute());
     }
 
-    private IEnumerator RouteTargetChanerCoroutine()
+    private void AttackPlayer(float damage)
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(routeChangeDelay.x, routeChangeDelay.y));
-            _currentRourteTarget = _randomPointsGenerator.GetRandomPointToRoute();
-        }
-    }
-
-    private void HitPlayer()
-    {
-        StartCoroutine(HitPlayerCoroutine());
-    }
-
-    private IEnumerator HitPlayerCoroutine()
-    {
-        _inContact = true;
         _gameplay.OnEnemyTouch?.Invoke();
-
-        while (_inContact)
-        {
-            yield return new WaitForSeconds(_contactDelay);
-            _gameplay.OnEnemyTouch?.Invoke();
-        }
     }
 }

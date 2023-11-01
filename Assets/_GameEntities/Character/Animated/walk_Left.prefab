@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 9006025468407747563}
   - component: {fileID: 9006025468407747562}
   - component: {fileID: 9006025468407747557}
-  m_Layer: 0
+  - component: {fileID: 1483725513}
+  m_Layer: 6
   m_Name: walk_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9006025468407747563
 Transform:
   m_ObjectHideFlags: 0
@@ -88,7 +89,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &9006025468407747557
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,8 +106,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1483725513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006025468407747556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281ea40b849217f479be80f0fe0506b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animationSide: 3
+  _animationState: 1
 --- !u!1 &9006025468973331132
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9006025468973331133}
   - component: {fileID: 9006025468973331106}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

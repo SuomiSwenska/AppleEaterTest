@@ -53,6 +53,6 @@ public class GameplayLogic : MonoBehaviour
     private void ChangeGameStateInWaiting()
     {
         _gameplay.InPlaing = false;
-        _gameplay.Character.Deactivate();
+        _gameplay.Character.SetDefaultAnimation();
     }
 }
